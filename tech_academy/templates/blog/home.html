@@ -1,0 +1,17 @@
+{% block content %}
+        {% if cohorts %}
+            <div class="content container">
+                {% for cohort in cohorts %}
+                    <time class="date">
+                        {{ cohort.date_created }}
+                    </time>
+                    <h2><a href="/">{{cohort.name}}</a></h2>
+                    <h3>{{cohort.description}}</h3>
+                    <a href="{% url 'create_cohort' %}" title="post">create cohort</a>
+        <!--            <h4>Natives: {{ cohort.native}}</h4>-->
+                {% endfor %}
+            </div>
+        {% else %}
+        <h1><a href="/"> Create A Cohort</a></h1>
+        {% endif %}
+{% endblock %}
