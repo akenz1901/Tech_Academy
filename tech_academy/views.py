@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import CohortForm, NativeForm
 from .models import Cohort, Native
@@ -19,15 +19,35 @@ def create_cohort(request):
             cohort.author = request.user
             cohort.date_created = timezone.now()
             cohort.save()
-            return redirect(request, '')
+            return redirect('cohort_detail', pk=cohort.pk)
     else:
         form = CohortForm()
         return render(request, 'blog/new_cohort.html', {'form': form})
 
 
+def cohort_detail(request, pk):
+    cohort = get_object_or_404(Cohort, pk=pk)
+    return render(request, 'blog/cohort_description.html', {'cohort': cohort})
+
+
 def native_list(request):
-    return render(request, '')
+    natives = Native.objects.filter(date_added__lte=timezone.now()).order_by("date_added")
+    return render(request, 'blog/native_list.html', {'natives': natives})
 
 
 def add_native(request):
-    return render(request, '')
+    if request.method == 'POST':
+        form = NativeForm(request.POST)
+        if form.is_valid():
+            native = form.save(commit=False)
+            native.date_added = timezone.now()
+            native.save()
+            return redirect('native_list')
+    else:
+        form = NativeForm()
+    return render(request, 'blog/add_native.html', {'form': form})
+
+
+def native_detail(request, pk):
+    native = get_object_or_404(Native, pk=pk)
+    return render(request, 'blog/native_detail.html', {'native': native})
