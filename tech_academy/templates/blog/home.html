@@ -1,3 +1,4 @@
+{% extends 'blog/base.html' %}
 {% block content %}
         {% if cohorts %}
             <div class="content container">
@@ -5,10 +6,8 @@
                     <time class="date">
                         {{ cohort.date_created }}
                     </time>
-                    <h2><a href="/">{{cohort.name}}</a></h2>
-                    <h3>{{cohort.description}}</h3>
-                    <a href="{% url 'create_cohort' %}" title="post">create cohort</a>
-        <!--            <h4>Natives: {{ cohort.native}}</h4>-->
+                    <h2><a href="{% url 'cohort_detail' pk=cohort.pk %}">{{cohort.name}}</a></h2>
+                    <h4><a href="{% url 'native_list' %}">Natives: {{ cohort.native_set.count }} </a></h4>
                 {% endfor %}
             </div>
         {% else %}
