@@ -1,7 +1,9 @@
+{% extends 'blog/base.html' %}
+
 {% block content %}
     <h2>New Cohort</h2>
     <form method="POST" class="cohort-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn button">Submit</button>
+        <button type="submit" class="button">Submit</button>
     </form>
 {% endblock %}
