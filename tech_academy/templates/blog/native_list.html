@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="form-row">
+        {% for native in natives %}
+        <div class="col-md-4">
+            <div class="card" >
+                <a href="{% url 'native_detail' pk=native.pk %}"><img class= "card-img-top" src="{{ native.image.url }}" width="60cm"/></a>
+                <h3 class="card-title">{{ native }}</h3>
+                <p class="card-text" >{{ native.cohort|linebreaksbr}}</p>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}
