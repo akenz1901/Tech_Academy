@@ -16,7 +16,7 @@ class Native(models.Model):
     last_name = models.CharField(max_length=80)
     image = models.ImageField(upload_to="native_images/")
     cohort = models.ForeignKey(Cohort, on_delete=models.DO_NOTHING)
-    date_added = models.DateTimeField(default=timezone.now())
+    date_added = models.DateTimeField(timezone.now())
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -24,7 +24,7 @@ class Native(models.Model):
 
 class Thought(models.Model):
     thought_text = models.TextField()
-    date_posted = models.DateTimeField(default=timezone.now())
+    date_posted = models.DateTimeField(timezone.now())
     native = models.OneToOneField(Native, on_delete=models.DO_NOTHING)
 
     def __str__(self):
