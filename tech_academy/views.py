@@ -37,7 +37,7 @@ def native_list(request):
 
 def add_native(request):
     if request.method == 'POST':
-        form = NativeForm(request.POST)
+        form = NativeForm(request.POST, request.FILES)
         if form.is_valid():
             native = form.save(commit=False)
             native.date_added = timezone.now()
