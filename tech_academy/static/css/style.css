@@ -1,0 +1,18 @@
+.page-header {
+    background-color: paleturquoise;
+    margin-top: 2px;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}
+.card{
+    display: flex;
+}
+.detail{
+    float: left;
+    padding: 20px 40px 20px 20px;
+}
+
+.detail ul{
+    float: right;
+    padding-left: 50px;
+}
