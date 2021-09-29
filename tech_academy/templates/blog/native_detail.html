@@ -2,8 +2,8 @@
 
 {% block content %}
     <div class="card">
-       <img class= "card-img-top" src="{{ native.image.url }}" width="1900cm" height="500cm" />
-        <div class="label-left">
+       <img class= "card-img-top" src="{{ native.image.url }}"  height="600cm"/>
+        <div class="detail">
             <ul>
                 <li><h5 class="card-title">{{ native.first_name }}</h5></li>
                 <hr>
@@ -11,7 +11,7 @@
                 <hr>
                 <li><h5 class="card-text" >{{ native.cohort}}</h5></li>
                 <hr>
-                <li><h5>SCV{{native.pk}}</h5></li><hr>
+                <li><h5>SCV00{{native.pk}}</h5></li><hr>
                 <li><time class="card-text" >{{ native.date_added}}</time></li>
             </ul>
 
