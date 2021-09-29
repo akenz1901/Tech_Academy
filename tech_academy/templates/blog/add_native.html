@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     <h2>New Native</h2>
-    <form method="POST" class="native-form">{% csrf_token %}
+    <form method="POST" class="native-form" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_ul }}
         <button type="submit" class="btn btn-button">Submit</button>
     </form>
